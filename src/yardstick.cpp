@@ -6,7 +6,7 @@
 
 double toSeconds(struct timespec ts)
 {
-	return ts.tv_sec + (ts.tv_nsec / BILLION);
+	return (double)ts.tv_sec + ((double)ts.tv_nsec / (double)BILLION);
 }
 
 struct timespec
@@ -121,6 +121,12 @@ Yardstick::std_dev()
 	stddev.tv_sec = (int)sumDev;
 	stddev.tv_nsec = (sumDev - stddev.tv_sec) * BILLION;
 	return stddev;
+}
+
+double
+Yardstick::total()
+{
+	return toSeconds(avg()) * time_trials.size();
 }
 
 void Yardstick::stop()

@@ -66,6 +66,8 @@ class Yardstick
         //
         //struct timespec std_dev();
 
+		double total();
+
 		//
 		// Print out formatted informationg about the trials.
 		//
